@@ -1,0 +1,13 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    background: #4f1915;
+}
+.mapa{
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #BCBCBC;
+    box-shadow: 5px 5px 5px #888888;
+
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Boot ReLog - Register</title>
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <!-- relaciono el archivo css -->
+    <link rel="stylesheet" type="text/css" href="css/mapa.css"/>
+    <style>
+        button{
+            padding: 0;
+            margin: 0;
+            border-color: #36b9cc;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Nueva Organización</h1>
+                            </div>
+                            <form class="user">
+
+                                <div class="form-group">
+                                    <input type="nombre" class="form-control form-control-user" id="txtNombre"
+                                           placeholder="Nombre del Unidad ">
+                                </div>
+                                <div class="form-group">
+                                    <input type="efectivo" class="form-control form-control-user" id="txtEfectivo"
+                                           placeholder="Efectivo Organico">
+                                </div>
+
+                                <td valign="top" colspan="2" class="dataTables_empty">Posición del elemento</td>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-5 mb-3 mb-sm-0">
+                                        <input type="latitud" class="form-control form-control-user" id="txtLatitud"
+                                               placeholder="Latitud">
+                                    </div>
+
+                                    <div class="col-sm-5 mb-3 mb-sm-0">
+                                        <input type="longitud" class="form-control form-control-user" id="txtLongitud"
+                                               placeholder="Longitud">
+                                    </div>
+                                    <div style="text-align: center">
+                                        <button type="button" onclick="posicionar()">
+
+                                            <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" width="30px" height="30px" title="Ubicar en el mapa">
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="mapa">
+                                    <div id="map"></div>
+                                    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+                                            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+                                            crossorigin=""></script>
+                                    <!-- relaciono el archivo js -->
+                                    <script src="js/mapa.js"></script>
+
+                                </div>
+
+
+                                <div class="form-group row">
+
+                                </div>
+                                <a onclick="registrarOrganizacion()" href="#" class="btn btn-primary btn-user btn-block">
+                                    Registrar
+                                </a>
+
+                            </form>
+                            <hr>
+
+                            <div class="text-center">
+                                <a class="small" href="principal.html">Volver al Inicio</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+
+    <script src="js/nuevaUnidad.js"></script>
+
+</body>
+
+</html>
