@@ -5,10 +5,10 @@ spring:
   # Database
   datasource:
     driverClassName: org.postgresql.Driver
-
     url: jdbc:postgresql://localhost:5432/relog
     username: postgres
     password: thiago30
+
 
   jpa:
     show-sql: true

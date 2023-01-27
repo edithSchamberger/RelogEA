@@ -61,20 +61,6 @@
 
 
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-               aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Efectos</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Efectos:</h6>
-                    <a class="collapse-item" id="ventana-emergente">Agregar Efectos</a>
-
-                </div>
-            </div>
-        </li>
 
         <!-- Nav Item - Charts -->
 
@@ -123,22 +109,30 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Solicitar efectos</h1>
 
+                <div>
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Efectos:</h6>
+                        <a class="collapse-item" id="ventana-emergente" >Agregar Efectos</a>
+
+                    </div>
+                </div>
+
+
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="organizaciones" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="tabla-solicitudes" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Nombre del Efecto</th>
                                     <th>Clase</th>
                                     <th>Cantidad </th>
-                                    <th>Observaciones</th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="Solicitudes-tbody">
 
 
                                 </tbody>
@@ -163,17 +157,13 @@
                                         <option value="-1">Selecciones un tipo de clase</option>
                                         <option value="1">CLI-Racionamiento</option>
                                         <option value="2">CLII-Vestuario y equipo</option>
-                                        <option value="3">CLII-Combustible y Lubricantes</option>
+                                        <option value="3">CLIII-Combustible y Lubricantes</option>
                                         <option value="4">CLV-Municion</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <select name="select-clase" id="select-efecto"   >
-                                        <option value="-1">Selecciones un tipo de clase</option>
-                                        <option value="1">CLI-Racionamiento</option>
-                                        <option value="2">CLII-Vestuario y equipo</option>
-                                        <option value="3">CLII-Combustible y Lubricantes</option>
-                                        <option value="4">CLV-Municion</option>
+                                        <option value="-1">Selecciones el efecto</option>
                                     </select>
                                 </div>
                             <div class="form-group">
@@ -181,12 +171,9 @@
                                        id="cantidadEf"
                                        placeholder="Ingresa cantidad del Efecto">
                             </div>
-
-
-                            <a onclick="solicitarEfecto()" href="#" class="btn btn-primary btn-user btn-block">
+                            <a onclick="registrarSolicitudes()" href="#" class="btn btn-primary btn-user btn-block">
                                 Aceptar
                             </a>
-
                             </form>
                             <hr>
                             <div class="text-center">
@@ -260,7 +247,7 @@
 
 <!-- Page level custom scripts -->
 
-<script src="js/efectos.js"></script>
+<script src="js/requerimientos.js"></script>
 
 </body>
 
