@@ -181,9 +181,34 @@
                             </div>
                         </div>
              </dialog>
-            <a onclick="confirmar()" href="#" class="btn btn-primary btn-user btn-block">
+            <a  id="aceptar" class="btn btn-primary btn-user btn-block">
                 Aceptar
             </a>
+
+
+
+            <dialog id="modalFecha">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Ingresar Fecha Requerida</h1>
+                    </div>
+                    <form class="user">
+                        <div class="form-group">
+                            <!-- ingreso el calendario -->
+                            <!-- <input type="date" min="2023-01-01" max="2023-12-31" id="fecha"> -->
+                            <input type="date" [min]="fechaminima" [max]="fechamaxima" id="fecha">
+                        </div>
+                        <a onclick="generarRequerimiento()" href="#" class="btn btn-primary btn-user btn-block">
+                            Aceptar
+                        </a>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" id="volverFecha">Cancelar</a>
+                    </div>
+                </div>
+            </dialog>
+
 
 
  </div>
