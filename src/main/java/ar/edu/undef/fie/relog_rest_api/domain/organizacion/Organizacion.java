@@ -42,7 +42,13 @@ public class Organizacion {
     }
 
     public OrganizacionResponse response(){
-        return new OrganizacionResponse(organizacionId,nombre,efectivoOrganico,latitud,longitud, estadoAbastecimientos
+        return new OrganizacionResponse(
+                organizacionId,
+                nombre,
+                efectivoOrganico,
+                latitud,
+                longitud, 
+                estadoAbastecimientos
                 .stream()
                 .map(EstadoAbastecimiento::response)
                 .collect(Collectors.toList()));
@@ -98,6 +104,7 @@ public class Organizacion {
     public void setEstadoAbastecimientos(List<EstadoAbastecimiento> estadoAbastecimientos) {
         this.estadoAbastecimientos = estadoAbastecimientos;
     }
+
 
 }
 

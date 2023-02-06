@@ -11,17 +11,20 @@ public class SolicitudRequest {
 
     private Long cantidad;
     private Long efectoId;
-
+    private Long organizacionId;
 
     public Long getCantidad() {
         return cantidad;
     }
 
-
-
     public Long getEfectoId() {
         return efectoId;
     }
+
+    public Long getOrganizacionId() {
+        return organizacionId;
+    }
+
 
     public void setCantidad(Long cantidad) {
         this.cantidad = cantidad;
@@ -30,5 +33,9 @@ public class SolicitudRequest {
     public void setEfectoId(Long efectoId) {
         this.efectoId = efectoId;
     }
+    public void setOrganizacionId(Long organizacionId) {
+        this.organizacionId = organizacionId;
+    }
+
 
 }

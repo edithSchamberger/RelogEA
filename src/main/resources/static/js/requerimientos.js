@@ -1,15 +1,20 @@
 $(document).ready(function() {
-    $('#moda').attr('min', new Date().toISOString().split('T')[0])
-    //const modalFecha = document.querySelector("#modalFecha input")
-    //modalFecha.min = "2022-01-31"
+   // $('#modalFecha').attr('min', new Date().toISOString().split('T')[0])
+    //let modalFecha = document.querySelector("#modalFecha input")
+    //new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()+1)
     // ver tema de minimo
     //modalFecha.min = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`
-    console.log(modalFecha);
+    //console.log(modalFecha);
+    //const fecha = new Date();
+    //const añoActual = fecha.getFullYear();
+    //const mesActual = fecha.getMonth() + 1;
+    //const diaActual = fecha.getDate() + 1;
+
     cargarSolicitudes();
 
 
-});
 
+});
 const btnAgregarEfecto= document.querySelector("#ventana-emergente");
 const modal = document.querySelector("#modal");
 const btnVolver=document.querySelector("#volver")
@@ -30,7 +35,6 @@ btnAceptar.addEventListener("click", ()=>{
 btnVolverFecha.addEventListener("click", ()=>{
     modalFecha.close();
 })
-
 
 const elementoSelector= document.getElementById("select-clase");
 elementoSelector.addEventListener("change", ()=>{
@@ -57,12 +61,14 @@ async function agregarSolicitudes(){
 
 function registrarSolicitudes(){
     let selectorEfecto= document.getElementById("select-efecto").value;
-    console.log(selectorEfecto);
-    let cant = document.getElementById("cantidadEf").value;
-    console.log(cant);
     let efecID = selectorEfecto
-    console.log(efecID);
-    let payload = {cantidad: cant  , efectoId: efecID }
+    console.log("valor del id efecto",efecID);
+
+    let cant = document.getElementById("cantidadEf").value;
+    console.log("valor cantidad",cant);
+    let orgId = localStorage.getItem("organizacionId");
+    console.log(orgId);
+    let payload = {cantidad: cant  , efectoId: efecID , organizacionId :orgId}
     console.log(payload);
     fetch("/solicitudes",{
         method:"POST",
@@ -84,12 +90,14 @@ async function  cargarSolicitudes(){
     //console.log(efectos);
     // muestra la peticion
     //console.log(efectosReq);
+    let botonEliminar = `<a class="btn btn-danger"  onclick="eliminarSolicitud(${solicitudes.idSolicitudes})"><i class=\"fas fa-trash\"></i></a>`;
     let elementos =[];
     for (let sol of solicitudes){
         elementos.push(`<tr>
             <td>${sol.efecto.nombreEfecto}</td>
             <td>${sol.efecto.clase.abreviatura}</td>
             <td>${sol.cantidad} </td>
+            <td>${botonEliminar} </td>
         </tr>`)
     }
     //me trae el elemento por id
@@ -98,35 +106,38 @@ async function  cargarSolicitudes(){
 
 }
 
-
-
-
 async function generarRequerimiento(){
-    const requerimientosReq = await fetch('/requerimientos');
-    const requerimientos = await requerimientosReq.json();
-    console.log(requerimientosReq);
-    console.log(requerimientos);
-    let elementos =[];
-    for (let req of requerimientos){
-        elementos.push(`<tr>
-            <td>${req.organizacion.organizacionId}</td>
-            <td>${req.fechaDeEntregaRequerida}</td>
-            <td>${req.solicitudes.solicitudId} </td>
-        </tr>`)
-    }
-    //let tabla=document.getElementById("Solicitudes-tbody");
-    //tabla.innerHTML = elementos.join("");
+    let org=localStorage.getItem("organizacionId");
+    org =Number(org);
+    let fecha = document.getElementById("fecha").value;
+    let fehaNueva = new Date(fecha)
 
-    //{
-      //  "orgId": 1,
-        //"fechaDeEntregaRequerida": "2023-03-05T12:59:11.332",
-        //"idSolicitudes":[1,2]
-    //}
+    let payload = {"orgId": org, "fechaDeEntregaRequerida": fehaNueva,"idSolicitudes":[1,2,3]}
+    fetch("/requerimientos",{
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+            "Content-Type" : "application/json"
+        }
+
+    })
 }
 
 
+async function eliminarSolicitud(id) {
 
+    if (!confirm('¿Desea eliminar esta solicitud?')) {
+        return;
+    }
 
+    const request = await fetch('/Solicitudes/' + id+'?status=false', {
+        method: 'DELETE',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
 
-//http://localhost:8282/clases/2/efectos
-//id="select-efecto"
+    location.reload()
+}
+

@@ -10,13 +10,15 @@ public class SolicitudResponse {
 
     //private Long requerimientoId;
     private EfectoResponse efecto;
+    private OrganizacionResponse organizacion;
 
-
-    public SolicitudResponse(Long solicitudId, Long cantidad, EfectoResponse efecto) {
+    public SolicitudResponse(Long solicitudId, Long cantidad, EfectoResponse efecto, OrganizacionResponse organizacion) {
         this.solicitudId = solicitudId;
         this.cantidad = cantidad;
         this.efecto = efecto;
+        this.organizacion = organizacion;
     }
+
 
     public Long getSolicitudId() {
         return solicitudId;
@@ -42,11 +44,20 @@ public class SolicitudResponse {
         this.efecto = efecto;
     }
 
+    public OrganizacionResponse getOrganizacion() {
+        return organizacion;
+    }
+
+    public void setOrganizacion(OrganizacionResponse organizacion) {
+        this.organizacion = organizacion;
+    }
+
     public SolicitudResponse response() {
         return new SolicitudResponse(
                 solicitudId,
                 cantidad,
-                efecto);
+                efecto,
+                organizacion);
     }
 
 }
