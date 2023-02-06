@@ -129,6 +129,7 @@
                                     <th>Nombre del Efecto</th>
                                     <th>Clase</th>
                                     <th>Cantidad </th>
+                                    <th>Obs</th>
                                 </tr>
                                 </thead>
 
@@ -186,7 +187,6 @@
             </a>
 
 
-
             <dialog id="modalFecha">
                 <div class="p-5">
                     <div class="text-center">
@@ -196,7 +196,8 @@
                         <div class="form-group">
                             <!-- ingreso el calendario -->
                             <!-- <input type="date" min="2023-01-01" max="2023-12-31" id="fecha"> -->
-                            <input type="date" [min]="fechaminima" [max]="fechamaxima" id="fecha">
+                            <input type="date" min="2023-01-01" max="2023-12-31" id="fecha" required/>
+                            <span class="validity"></span>
                         </div>
                         <a onclick="generarRequerimiento()" href="#" class="btn btn-primary btn-user btn-block">
                             Aceptar
@@ -209,7 +210,28 @@
                 </div>
             </dialog>
 
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
 
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tabla-requerimientos" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Nro</th>
+                                <th>Efecto-Cantidad</th>
+                                <th>Estado </th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="Requerimientos-tbody">
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
  </div>
 
@@ -273,6 +295,8 @@
 <!-- Page level custom scripts -->
 
 <script src="js/requerimientos.js"></script>
+
+<script src="js/organizaciones.js"></script>
 
 </body>
 

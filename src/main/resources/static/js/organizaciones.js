@@ -16,25 +16,28 @@ async function cargarOrganizaciones(){
     console.log(organizaciones);
     let listadoHtml = '';
     for (let organizacion of organizaciones) {
-        let botonInfo = `<a href="organizaciones.html" class="btn btn-info" onclick="guardarId(${organizacion.id})">Est Ab</a>`;
-        let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" STYLE="background: #c92a2a" onclick="guardarId(${organizacion.id})">Nuevo Requerimiento</a>`;
+        console.log("prueba de organizacion", organizacion)
+        let botonInfo = `<a href="organizaciones.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Est Ab</a>`;
+        let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" STYLE="background: #258391" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
 
         let org = "<tr><th>"+organizacion.nombre+" " + "</th>" +
             "<th>"+organizacion.efectivoOrganico+"</th>" +
             "<th>"+organizacion.latitud+"</th>" +
             "<th>"+organizacion.longitud+"</th>" +
-            "<th>"+botonInfo+ "   "  +botonNuevoRequerimiento +"</th>"
+            "<th>"+botonNuevoRequerimiento+ " "  +botonInfo +"</th>"
 
         listadoHtml+= org
     }
-
-
     document.querySelector('#organizaciones tbody').outerHTML = listadoHtml;
 
 }
 
+function guardarId(organizacionId) {
+    console.log("id de la organi", organizacionId);
+    alert("Crear un nuevo Requerimiento");
+    localStorage.setItem("organizacionId",String(organizacionId) );
+    //guardar un objeto
+    //localStorage.setItem("organizacionId",JSON.stringify(OBJETO) );
 
-function guardarId(id) {
-    localStorage.id = id;
 }
 

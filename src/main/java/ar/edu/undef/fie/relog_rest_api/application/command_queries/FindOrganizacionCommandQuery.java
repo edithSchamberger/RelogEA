@@ -24,7 +24,7 @@ public class FindOrganizacionCommandQuery {
    public Organizacion findById(Long id) {
         return repository
                 .findById(id)
-                .orElseThrow(()->new RuntimeException("Clase No encontrada"));
+                .orElseThrow(()->new RuntimeException("No se encontro la organizacion con id" + id));
 
     }
 
