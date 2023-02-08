@@ -40,7 +40,8 @@ public class Requerimiento {
 
 
     public RequerimientoResponse response(){
-        return new RequerimientoResponse(requerimientoId,
+        return new RequerimientoResponse(
+                requerimientoId,
                 getOrganizacionOp().map(Organizacion::response).orElse(null),
                 fechaDeEntregaRequerida,
                 solicitudes.stream().map(Solicitud::response).collect(Collectors.toList()),

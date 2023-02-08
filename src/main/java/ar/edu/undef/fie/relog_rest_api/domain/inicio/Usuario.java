@@ -18,12 +18,14 @@ public class Usuario {
     private String apellido;
     private String email;
     private String password;
+    private String rol;
 
-    public Usuario(String nombre, String apellido, String email, String password) {
+    public Usuario(String nombre, String apellido, String email, String password, String rol) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
+        this.rol= rol;
     }
 
     public Usuario() {
@@ -71,7 +73,15 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
     public UsuarioResponse representation() {
-        return new UsuarioResponse(id, nombre, apellido, email);
+        return new UsuarioResponse(id, nombre, apellido, email, rol);
     }
 }

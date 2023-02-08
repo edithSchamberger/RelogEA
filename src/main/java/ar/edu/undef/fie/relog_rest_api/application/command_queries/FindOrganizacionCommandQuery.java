@@ -5,6 +5,7 @@ import ar.edu.undef.fie.relog_rest_api.infrastructure.OrganizacionRepository;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +34,6 @@ public class FindOrganizacionCommandQuery {
         return repository.findById(id);
 
     }
+
 
 }

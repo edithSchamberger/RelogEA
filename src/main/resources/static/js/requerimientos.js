@@ -11,6 +11,7 @@ $(document).ready(function() {
     //const diaActual = fecha.getDate() + 1;
 
     cargarSolicitudes();
+    cargarRequerimientos();
 
 
 
@@ -63,13 +64,11 @@ function registrarSolicitudes(){
     let selectorEfecto= document.getElementById("select-efecto").value;
     let efecID = selectorEfecto
     console.log("valor del id efecto",efecID);
-
     let cant = document.getElementById("cantidadEf").value;
     console.log("valor cantidad",cant);
     let orgId = localStorage.getItem("organizacionId");
     console.log(orgId);
     let payload = {cantidad: cant  , efectoId: efecID , organizacionId :orgId}
-    console.log(payload);
     fetch("/solicitudes",{
         method:"POST",
         body: JSON.stringify(payload),
@@ -82,22 +81,22 @@ function registrarSolicitudes(){
     cargarSolicitudes();
 }
 
-async function  cargarSolicitudes(){
+async function cargarSolicitudes(){
     // const efectosReq = await fetch(ruta, objeto de peticion);
     const solicitudesReq = await fetch('/solicitudes');
     const solicitudes = await solicitudesReq.json();
-    // lo que manda el servidor
-    //console.log(efectos);
-    // muestra la peticion
-    //console.log(efectosReq);
-    let botonEliminar = `<a class="btn btn-danger"  onclick="eliminarSolicitud(${solicitudes.idSolicitudes})"><i class=\"fas fa-trash\"></i></a>`;
     let elementos =[];
     for (let sol of solicitudes){
+        console.log("nuevo ",sol);
         elementos.push(`<tr>
             <td>${sol.efecto.nombreEfecto}</td>
             <td>${sol.efecto.clase.abreviatura}</td>
             <td>${sol.cantidad} </td>
-            <td>${botonEliminar} </td>
+            <td>
+                <a class="btn btn-danger"  onclick="eliminarSolicitud(${sol.solicitudId})">
+                <i class=\"fas fa-trash\"></i>
+                </a> 
+            </td>
         </tr>`)
     }
     //me trae el elemento por id
@@ -106,38 +105,76 @@ async function  cargarSolicitudes(){
 
 }
 
+async function eliminarSolicitud(id) {
+
+    if (!confirm('¿Desea eliminar esta solicitud?')) {
+        return;
+    }
+    await fetch("/solicitudes/" + id, {
+        method: 'DELETE',
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    });
+    alert("Se elimininó  correctamente");
+    cargarSolicitudes();
+
+}
+
+//requerimientos
+
+
 async function generarRequerimiento(){
+
     let org=localStorage.getItem("organizacionId");
     org =Number(org);
     let fecha = document.getElementById("fecha").value;
     let fehaNueva = new Date(fecha)
-
-    let payload = {"orgId": org, "fechaDeEntregaRequerida": fehaNueva,"idSolicitudes":[1,2,3]}
+    //peticion
+    let peticionSolicitudes = await fetch("/solicitudes");
+    //solicitudes
+    let solicitudes= await peticionSolicitudes.json();
+    let arraySol= [];
+    for(let sol of solicitudes){
+        arraySol.push(sol.solicitudId);
+    }
+    console.log("vemos la solicitueds de la peticion", arraySol);
+    let payload = {"orgId": org, "fechaDeEntregaRequerida": fehaNueva,"idSolicitudes":arraySol}
     fetch("/requerimientos",{
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
             "Content-Type" : "application/json"
         }
-
     })
+    modalFecha.close();
+    alert("se creo un nuevo requerimiento")
 }
 
+    //"fechaDeEntregaRequerida": "2023-03-05T12:59:11.332",
 
-async function eliminarSolicitud(id) {
 
-    if (!confirm('¿Desea eliminar esta solicitud?')) {
-        return;
+async function cargarRequerimientos(){
+    // const efectosReq = await fetch(ruta, objeto de peticion);
+    const requerimientosReq = await fetch('/requerimientos');
+    const solicitudes = await solicitudesReq.json();
+    let elementos =[];
+    for (let sol of solicitudes){
+        console.log("nuevo ",sol);
+        elementos.push(`<tr>
+            <td>${sol.efecto.nombreEfecto}</td>
+            <td>${sol.efecto.clase.abreviatura}</td>
+            <td>${sol.cantidad} </td>
+            <td>
+                <a class="btn btn-danger"  onclick="eliminarSolicitud(${sol.solicitudId})">
+                <i class=\"fas fa-trash\"></i>
+                </a> 
+            </td>
+        </tr>`)
     }
+    //me trae el elemento por id
+    let tabla=document.getElementById("Requerimientos-tbody");
+    tabla.innerHTML = elementos.join("");
 
-    const request = await fetch('/Solicitudes/' + id+'?status=false', {
-        method: 'DELETE',
-        headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    });
-
-    location.reload()
 }
 

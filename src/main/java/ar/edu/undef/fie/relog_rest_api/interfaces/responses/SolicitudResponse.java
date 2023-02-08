@@ -11,12 +11,14 @@ public class SolicitudResponse {
     //private Long requerimientoId;
     private EfectoResponse efecto;
     private OrganizacionResponse organizacion;
+    private Boolean confirmadaSolicitud;
 
-    public SolicitudResponse(Long solicitudId, Long cantidad, EfectoResponse efecto, OrganizacionResponse organizacion) {
+    public SolicitudResponse(Long solicitudId, Long cantidad, EfectoResponse efecto, OrganizacionResponse organizacion, Boolean confirmadaSolicitud) {
         this.solicitudId = solicitudId;
         this.cantidad = cantidad;
         this.efecto = efecto;
         this.organizacion = organizacion;
+        this.confirmadaSolicitud = confirmadaSolicitud;
     }
 
 
@@ -52,12 +54,21 @@ public class SolicitudResponse {
         this.organizacion = organizacion;
     }
 
+    public Boolean getConfirmadaSolicitud() {
+        return confirmadaSolicitud;
+    }
+
+    public void setConfirmadaSolicitud(Boolean confirmadaSolicitud) {
+        this.confirmadaSolicitud = confirmadaSolicitud;
+    }
+
     public SolicitudResponse response() {
         return new SolicitudResponse(
                 solicitudId,
                 cantidad,
                 efecto,
-                organizacion);
+                organizacion,
+                confirmadaSolicitud);
     }
 
 }

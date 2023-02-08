@@ -2,8 +2,10 @@ package ar.edu.undef.fie.relog_rest_api.interfaces;
 
 import ar.edu.undef.fie.relog_rest_api.application.command_queries.FindRequerimientoCommandQuery;
 import ar.edu.undef.fie.relog_rest_api.application.command_services.RequerimientoCommandService;
+import ar.edu.undef.fie.relog_rest_api.domain.clases.Efecto;
 import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Requerimiento;
 import ar.edu.undef.fie.relog_rest_api.interfaces.request.RequerimientoRequest;
+import ar.edu.undef.fie.relog_rest_api.interfaces.responses.EfectoResponse;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.RequerimientoResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,14 +35,6 @@ public class RequerimientoController {
                 .map(Requerimiento::response)
                 .collect(Collectors.toList());
     }
-/*
-    @PostMapping("/requerimientos")
-    public RequerimientoResponse create(@RequestBody RequerimientoRequest request){
-        return service
-                .create(request)
-                .response();
-    }
-*/
 
     @PostMapping("/requerimientos")
     public RequerimientoResponse create(@RequestBody RequerimientoRequest request) {

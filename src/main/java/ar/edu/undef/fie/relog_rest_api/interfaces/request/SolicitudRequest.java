@@ -8,10 +8,12 @@ import javax.persistence.OneToOne;
 import java.util.stream.Collectors;
 
 public class SolicitudRequest {
+    private Long solid;
 
     private Long cantidad;
     private Long efectoId;
     private Long organizacionId;
+    private Boolean confirmadaSolicitud;
 
     public Long getCantidad() {
         return cantidad;
@@ -37,5 +39,19 @@ public class SolicitudRequest {
         this.organizacionId = organizacionId;
     }
 
+    public Long getSolid() {
+        return solid;
+    }
 
+    public void setSolid(Long solid) {
+        this.solid = solid;
+    }
+
+    public Boolean getConfirmadaSolicitud() {
+        return confirmadaSolicitud;
+    }
+
+    public void setConfirmadaSolicitud(Boolean confirmadaSolicitud) {
+        this.confirmadaSolicitud = confirmadaSolicitud;
+    }
 }

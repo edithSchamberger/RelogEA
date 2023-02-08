@@ -9,6 +9,7 @@ import ar.edu.undef.fie.relog_rest_api.domain.organizacion.Organizacion;
 import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.relog_rest_api.exception.NotFoundException;
 import ar.edu.undef.fie.relog_rest_api.interfaces.request.SolicitudRequest;
+import ar.edu.undef.fie.relog_rest_api.interfaces.responses.EfectoResponse;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.SolicitudResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,13 +50,24 @@ public class solicitudController {
                 .create(request)
                 .response();
     }
-    @DeleteMapping(value = "solicitudes/{id}")
+
+    @DeleteMapping(value = "/solicitudes/{id}")
     public ResponseEntity<String> eliminarSolicitud(@PathVariable Long id) throws NotFoundException {
         service.eliminar(service.findById(id));
 
         return new ResponseEntity<>(
-                "Solicitud eliminada con éxito",
+                "Persona eliminada con éxito",
                 HttpStatus.OK);
 
     }
+    @GetMapping("/organizaciones/{orgazanizacionId}/solicitudes")
+    public List<SolicitudResponse> findAllByOrganizacion(@PathVariable Long orgazanizacionId) {
+        return query
+                .findByOrganizacion(orgazanizacionId)
+                .stream()
+                .map(Solicitud::response)
+                .collect(Collectors.toList());
+    }
+
+
 }

@@ -6,9 +6,11 @@ import ar.edu.undef.fie.relog_rest_api.application.command_services.EstadoAbaste
 import ar.edu.undef.fie.relog_rest_api.application.command_services.OrganizacionCommandService;
 import ar.edu.undef.fie.relog_rest_api.domain.estadoAbastecimiento.movimiento.EstadoAbastecimiento;
 import ar.edu.undef.fie.relog_rest_api.domain.organizacion.Organizacion;
+import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.relog_rest_api.interfaces.request.OrganizacionRequest;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.EstadoAbastecimientoResponse;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.OrganizacionResponse;
+import ar.edu.undef.fie.relog_rest_api.interfaces.responses.SolicitudResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -68,6 +70,8 @@ public class OrganizacionController {
                 .getEstadoAbastecimientos().stream().map(EstadoAbastecimiento::response).collect(Collectors.toList());
 
     }
+
+
 
 
 

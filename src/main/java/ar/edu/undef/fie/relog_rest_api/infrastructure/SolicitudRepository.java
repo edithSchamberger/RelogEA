@@ -10,6 +10,8 @@ import java.util.List;
 public interface SolicitudRepository extends JpaRepository<Solicitud, Long> {
     public List<Solicitud> findAllBySolicitudIdIn(List<Long> ids);
 
+    List<Solicitud> findAllBySolicitudId(Long id);
 
+    List<Solicitud> findAllByOrganizacion_OrganizacionId(Long organizacionId);
 }
 

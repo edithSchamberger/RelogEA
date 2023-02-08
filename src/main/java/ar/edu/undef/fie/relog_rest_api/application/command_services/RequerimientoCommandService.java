@@ -38,13 +38,20 @@ public class RequerimientoCommandService {
 
     public Requerimiento create(RequerimientoRequest request) {
         var listaSolicitud = new ArrayList<Solicitud>();
+        var listaSolicitudok = new ArrayList<Solicitud>();
         for (var solicitudId: request.getIdSolicitudes()) {
             listaSolicitud.add(solcitudRepository.findById(solicitudId).orElse(null));
+        }
+        for (var solicitud :listaSolicitud){
+            if(solicitud.getConfirmadaSolicitud()==false){
+                solicitud.setConfirmadaSolicitud(true);
+                listaSolicitudok.add(solicitud);
+            }
         }
         var nuevoRequerimiento = new Requerimiento(
                 organizacionquery.findById(request.getOrgId()),
                 request.getFechaDeEntregaRequerida(),
-                listaSolicitud);
+                listaSolicitudok);
         return repository.save(nuevoRequerimiento);
     }
 

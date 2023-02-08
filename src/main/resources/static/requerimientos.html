@@ -43,7 +43,11 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-
+        <hr class="sidebar-divider d-none d-md-block">
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
 
         <!-- Heading -->
 
@@ -65,8 +69,7 @@
         <!-- Nav Item - Charts -->
 
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+
 
         <!-- Sidebar Toggler (Sidebar) -->
 
@@ -196,7 +199,7 @@
                         <div class="form-group">
                             <!-- ingreso el calendario -->
                             <!-- <input type="date" min="2023-01-01" max="2023-12-31" id="fecha"> -->
-                            <input type="date" min="2023-01-01" max="2023-12-31" id="fecha" required/>
+                            <input type="date" min="2023-01-31" max="2023-12-31" id="fecha" required/>
                             <span class="validity"></span>
                         </div>
                         <a onclick="generarRequerimiento()" href="#" class="btn btn-primary btn-user btn-block">

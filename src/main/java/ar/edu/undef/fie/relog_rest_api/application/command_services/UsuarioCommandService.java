@@ -22,6 +22,10 @@ public class UsuarioCommandService {
         return usuarioRepository.findByEmail(email);
     }
 
+    public Usuario getUser(String rol) {
+        return usuarioRepository.findByRol(rol);
+    }
+
     public void eliminar(Long id) {
         usuarioRepository.deleteById(id);
     }

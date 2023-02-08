@@ -1,60 +1,50 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  cargarOrganizaciones();
-  $('#organizaciones').DataTable();
+  cargarAllRequerimientos();
+    $('#allRequerimientos').DataTable();
 });
-async function cargarOrganizaciones(){
 
-    const request = await fetch('/organizaciones', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
-    const listOrganizaciones = await request.json();
-    let listadoHtml = '';
 
-    for (let organizacion of listOrganizaciones) {
-
-        let org = "<tr>" +
-            "<th>"+organizacion.organizacionResponseId+"</th>" +
-            "<th>"+organizacion.nombre+"</th>" +
-            "<th>"+" "+"</th>" +
-            "<th>" +
-            "<i class=\"fas fa-info-circle\"></i>\n" +
-            "<i class=\"fas fa-trash\"></i>" +
-            "</th></>";
-
-        listadoHtml+= org
+async function cargarAllRequerimientos(){
+    // const efectosReq = await fetch(ruta, objeto de peticion);
+    const requerimientoReq = await fetch('/requerimientos');
+    const requerimientos = await requerimientoReq.json();
+    let elementos =[];
+    for (let req of requerimientos){
+        console.log("nuevo ",req);
+        elementos.push(`<tr>
+            <td>${req.fechaDeEntregaRequerida}</td>
+            <td>${req.organizacion.nombre}</td>
+            <!-- condicion ? si true : si false-->
+            <td>${req.confirmado? "Autorizado" :"Pendiente"} </td>
+            <td>
+                <a class="btn btn-info"  onclick="autorizarReq(${req.requerimientoId})">
+                    <i >Autorizar</i>
+                </a> 
+                <a class="btn btn-success" onclick="guardarId(${req.requerimientoId})">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </td>            
+        </tr>`)
+        console.log("IDreque ",req.requerimientoId);
     }
-
-    console.log(listOrganizaciones);
-
-    document.querySelector('#organizaciones tbody').outerHTML = listadoHtml;
-
+    //me trae el elemento por id
+    let tabla=document.getElementById("allRequerimientos-tbody");
+    tabla.innerHTML = elementos.join("");
 }
-function guardarId(id) {
-    localStorage.id = id;
-}
-async function eliminarOrganizacion(id) {
 
-    if (!confirm('¿Desea eliminar esta organización?')) {
+async function autorizarReq(id) {
+    if (!confirm('¿Desea confirmar este Requerimiento?')) {
         return;
     }
-
-
-    const request = await fetch('/organizaciones/' + id +'?status=false', {
-
+    console.log("autorizando", id)
+    await fetch("/requerimientos/" + id, {
         method: 'PATCH',
-            headers:{
-            'Accept': 'application/json',
+        headers:{
             'Content-Type': 'application/json'
-        },
-
+        }
     });
-    alert('Organización eliminada');
+    alert("Se autorizo  correctamente");
+    cargarAllRequerimientos();
 
-
-    location.reload()
 }

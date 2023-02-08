@@ -23,7 +23,10 @@ public class RequerimientoResponse {
         this.fechaDeEntregaRequerida = fechaDeEntregaRequerida;
         var solicitudesResponse = new ArrayList<SolicitudResponse>();
         for (var solicitud : solicitudes) {
-            solicitudesResponse.add(solicitud.response());
+            if (solicitud.getConfirmadaSolicitud()==false){
+                solicitud.response().setConfirmadaSolicitud(true);;
+                solicitudesResponse.add(solicitud.response());
+            }
         }
         this.solicitudes = solicitudesResponse;
         this.confirmado = confirmado;

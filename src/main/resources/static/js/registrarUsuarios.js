@@ -1,25 +1,30 @@
 $(document).ready(function() {
 });
 async function cargarUsuarios(){
-    let datos = {};
-    datos.nombre = document.getElementById('txtNombre').value;
-    datos.apellido = document.getElementById('txtApellido').value;
-    datos.email = document.getElementById('txtEmail').value;
-    datos.password = document.getElementById('txtPassword').value;
-
+    let selectorNombre = document.getElementById('txtNombre').value;
+    let selectorApellido = document.getElementById('txtApellido').value;
+    let selectorEmail = document.getElementById('txtEmail').value;
+    let selectorPassword = document.getElementById('txtPassword').value;
+    let selectorRol = document.getElementById('select-rol').value;
+    console.log("esto es el rol", selectorRol);
     let repetirPassword = document.getElementById('txtRepetirPassword').value;
-
     if (repetirPassword != datos.password) {
         alert('La contraseña que escribiste es diferente.');
         return;
     }
+    let payload = {nombre : selectorNombre,
+        apellido: selectorApellido,
+        email: selectorEmail,
+        password: selectorPassword,
+        rol:selectorRol}
     const request = await fetch('/usuarios', {
         method: 'POST',
+        body : JSON.stringify(payload),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
-        body : JSON.stringify(datos)
+        }
+
     });
     console.log(request);
     alert("La cuenta fue creada con exito!");

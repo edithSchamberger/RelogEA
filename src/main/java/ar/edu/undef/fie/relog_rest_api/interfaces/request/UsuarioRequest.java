@@ -10,15 +10,17 @@ public class UsuarioRequest {
     private String email;
 
     private String password;
+    private String rol;
 
-    public UsuarioRequest(String nombre, String apellido, String email, String password) {
+    public UsuarioRequest(String nombre, String apellido, String email, String password,String rol) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
+        this.rol=rol;
     }
     public Usuario construct(){
-        Usuario usuario = new Usuario(nombre,apellido,email, password);
+        Usuario usuario = new Usuario(nombre,apellido,email, password,rol);
         return usuario;
     }
 
@@ -57,6 +59,12 @@ public class UsuarioRequest {
         this.password = password;
     }
 
+    public String getRol() {
+        return rol;
+    }
 
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
 

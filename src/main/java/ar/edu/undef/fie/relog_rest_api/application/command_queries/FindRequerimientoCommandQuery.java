@@ -1,6 +1,5 @@
 package ar.edu.undef.fie.relog_rest_api.application.command_queries;
 
-import ar.edu.undef.fie.relog_rest_api.domain.estadoAbastecimiento.movimiento.EstadoAbastecimiento;
 import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Requerimiento;
 import ar.edu.undef.fie.relog_rest_api.infrastructure.RequerimientoRepository;
 import org.springframework.stereotype.Service;
@@ -26,8 +25,5 @@ public class FindRequerimientoCommandQuery {
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Requerimiento no encontrado"));
     }
-
-
-
 
 }

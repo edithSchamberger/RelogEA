@@ -17,14 +17,16 @@ async function cargarOrganizaciones(){
     let listadoHtml = '';
     for (let organizacion of organizaciones) {
         console.log("prueba de organizacion", organizacion)
-        let botonInfo = `<a href="organizaciones.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Est Ab</a>`;
-        let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" STYLE="background: #258391" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
-
+        //let botonInfo = `<a href="organizaciones.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Est Ab</a>`;
+        let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
+        let botonInfo =`<a  href="EstAb.html" class="btn btn-success" onclick="verInfo()\">  <i class="fas fa-info-circle"></i> </a>`;
+        //let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" STYLE="background: #258391" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
         let org = "<tr><th>"+organizacion.nombre+" " + "</th>" +
             "<th>"+organizacion.efectivoOrganico+"</th>" +
             "<th>"+organizacion.latitud+"</th>" +
             "<th>"+organizacion.longitud+"</th>" +
-            "<th>"+botonNuevoRequerimiento+ " "  +botonInfo +"</th>"
+            "<th>"+botonNuevoRequerimiento+ " "  +botonInfo+
+            "</th>"
 
         listadoHtml+= org
     }

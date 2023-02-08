@@ -21,6 +21,8 @@ public class Solicitud {
     @ManyToOne
     private Organizacion organizacion;
 
+    private Boolean confirmadaSolicitud;
+
     //constructor
     /*
     public Solicitud(Long cantidad, Optional<Efecto> byId) {
@@ -30,17 +32,20 @@ public class Solicitud {
         this.efecto = efecto;
     }
 */
-    public Solicitud(Long cantidad, Optional<Efecto> byId,Optional< Organizacion> orgById) {
-    }
 
+//constructor
     public Solicitud(Long cantidad, Efecto efecto, Organizacion organizacion) {
         this.cantidad = cantidad;
         this.efecto = efecto;
         this.organizacion = organizacion;
+        this.confirmadaSolicitud = false;
     }
 
     public Solicitud() {
 
+    }
+
+    public Solicitud(Long cantidad, Optional<Efecto> byId,Optional< Organizacion> orgById) {
     }
     public Optional<Efecto> getEfectoOp() {
         return Optional.ofNullable(efecto);
@@ -51,7 +56,12 @@ public class Solicitud {
     }
 
     public SolicitudResponse response(){
-        return new SolicitudResponse(solicitudId,cantidad,efecto.response(), organizacion.response());
+        return new SolicitudResponse(
+                solicitudId,
+                cantidad,
+                efecto.response(),
+                organizacion.response(),
+                confirmadaSolicitud);
     }
 
     //getters y setters
@@ -85,5 +95,13 @@ public class Solicitud {
 
     public void setOrganizacion(Organizacion organizacion) {
         this.organizacion = organizacion;
+    }
+
+    public Boolean getConfirmadaSolicitud() {
+        return confirmadaSolicitud;
+    }
+
+    public void setConfirmadaSolicitud(Boolean confirmadaSolicitud) {
+        this.confirmadaSolicitud = confirmadaSolicitud;
     }
 }

@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 public class RequerimientoRequest {
     private Long orgId;
     private LocalDateTime fechaDeEntregaRequerida;
-    //private List<Long> idSolicitudes;
     private List<Long> idSolicitudes;
 
     public RequerimientoRequest() {
