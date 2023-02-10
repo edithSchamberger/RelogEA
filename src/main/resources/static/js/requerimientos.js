@@ -11,8 +11,7 @@ $(document).ready(function() {
     //const diaActual = fecha.getDate() + 1;
 
     cargarSolicitudes();
-    cargarRequerimientos();
-
+    morstrarRequerimientosOrgId();
 
 
 });
@@ -79,14 +78,29 @@ function registrarSolicitudes(){
     modal.close();
     alert("Se creo la Solicitud del EFECTO");
     cargarSolicitudes();
+    morstrarRequerimientosOrgId();
 }
 
+let auxSolicitud=[];
+
+
+
+// cargar solicitudes correspondiente según organizacion
 async function cargarSolicitudes(){
     // const efectosReq = await fetch(ruta, objeto de peticion);
-    const solicitudesReq = await fetch('/solicitudes');
-    const solicitudes = await solicitudesReq.json();
+    let tabla=document.getElementById("Solicitudes-tbody");
+    tabla.innerHTML="cargando...";
+    let id = localStorage.getItem("organizacionId")
+    const solicitudesReq = await fetch("/organizaciones/"+id+"/solicitudes");
+    let solicitudes = await solicitudesReq.json();
+    auxSolicitud=solicitudes.filter(
+        function(sol){
+        console.log("filter:", sol);
+        if(sol.confirmadaSolicitud==false)
+            return true;
+    })
     let elementos =[];
-    for (let sol of solicitudes){
+    for (let sol of auxSolicitud){
         console.log("nuevo ",sol);
         elementos.push(`<tr>
             <td>${sol.efecto.nombreEfecto}</td>
@@ -100,13 +114,12 @@ async function cargarSolicitudes(){
         </tr>`)
     }
     //me trae el elemento por id
-    let tabla=document.getElementById("Solicitudes-tbody");
+
     tabla.innerHTML = elementos.join("");
 
 }
 
 async function eliminarSolicitud(id) {
-
     if (!confirm('¿Desea eliminar esta solicitud?')) {
         return;
     }
@@ -121,21 +134,45 @@ async function eliminarSolicitud(id) {
 
 }
 
-//requerimientos
+//REQUERIMIENTOS
 
 
+//requerimientos filtrados por id de org
+async function morstrarRequerimientosOrgId(){
+    //traigo la tabla
+    let tabla=document.getElementById("Requerimientos-tbody");
+
+    //traigo el id de la Org
+    let id = localStorage.getItem("organizacionId")
+
+    // const efectosReq = await fetch(ruta, objeto de peticion);
+    const requerimientosReq = await fetch("/organizaciones/"+ id+"/requerimientos");
+    let requerimientos = await requerimientosReq.json();
+    let elementos =[];
+    for (let req of requerimientos){
+        console.log("nuevo re ",req);
+        elementos.push(`<tr>
+            <td>${req.requerimientoId}</td>
+            <td>${req.solicitudes}</td>
+            <td>${req.confirmado? "Autorizado" :"Pendiente"} </td>
+        </tr>`)
+    }
+    //me trae el elemento por id
+
+    tabla.innerHTML = elementos.join("");
+
+}
+
+
+// esta bien
 async function generarRequerimiento(){
-
     let org=localStorage.getItem("organizacionId");
     org =Number(org);
     let fecha = document.getElementById("fecha").value;
     let fehaNueva = new Date(fecha)
     //peticion
-    let peticionSolicitudes = await fetch("/solicitudes");
-    //solicitudes
-    let solicitudes= await peticionSolicitudes.json();
     let arraySol= [];
-    for(let sol of solicitudes){
+    for(let sol of auxSolicitud){
         arraySol.push(sol.solicitudId);
     }
     console.log("vemos la solicitueds de la peticion", arraySol);
@@ -149,32 +186,20 @@ async function generarRequerimiento(){
     })
     modalFecha.close();
     alert("se creo un nuevo requerimiento")
+    cargarSolicitudes();
+    morstrarRequerimientosOrgId();
+
 }
 
+
+
+/* setTimeout(function (){
+         cargarSolicitudes();
+     }, 5000)
+*/
     //"fechaDeEntregaRequerida": "2023-03-05T12:59:11.332",
 
+/*
 
-async function cargarRequerimientos(){
-    // const efectosReq = await fetch(ruta, objeto de peticion);
-    const requerimientosReq = await fetch('/requerimientos');
-    const solicitudes = await solicitudesReq.json();
-    let elementos =[];
-    for (let sol of solicitudes){
-        console.log("nuevo ",sol);
-        elementos.push(`<tr>
-            <td>${sol.efecto.nombreEfecto}</td>
-            <td>${sol.efecto.clase.abreviatura}</td>
-            <td>${sol.cantidad} </td>
-            <td>
-                <a class="btn btn-danger"  onclick="eliminarSolicitud(${sol.solicitudId})">
-                <i class=\"fas fa-trash\"></i>
-                </a> 
-            </td>
-        </tr>`)
-    }
-    //me trae el elemento por id
-    let tabla=document.getElementById("Requerimientos-tbody");
-    tabla.innerHTML = elementos.join("");
 
-}
-
+*/

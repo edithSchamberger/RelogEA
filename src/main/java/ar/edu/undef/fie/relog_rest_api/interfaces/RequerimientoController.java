@@ -4,6 +4,7 @@ import ar.edu.undef.fie.relog_rest_api.application.command_queries.FindRequerimi
 import ar.edu.undef.fie.relog_rest_api.application.command_services.RequerimientoCommandService;
 import ar.edu.undef.fie.relog_rest_api.domain.clases.Efecto;
 import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Requerimiento;
+import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.relog_rest_api.interfaces.request.RequerimientoRequest;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.EfectoResponse;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.RequerimientoResponse;
@@ -49,6 +50,15 @@ public class RequerimientoController {
         return new ResponseEntity<>(
                 "Requerimiento autorizado",
                 HttpStatus.OK);
+    }
+
+    @GetMapping("/organizaciones/{orgazanizacionId}/requerimientos")
+    public List<RequerimientoResponse> findAllByOrganizacion(@PathVariable Long orgazanizacionId) {
+        return query
+                .findByOrganizacion(orgazanizacionId)
+                .stream()
+                .map(Requerimiento::response)
+                .collect(Collectors.toList());
     }
 
 }

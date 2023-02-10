@@ -8,7 +8,7 @@ async function cargarUsuarios(){
     let selectorRol = document.getElementById('select-rol').value;
     console.log("esto es el rol", selectorRol);
     let repetirPassword = document.getElementById('txtRepetirPassword').value;
-    if (repetirPassword != datos.password) {
+    if (repetirPassword != selectorPassword) {
         alert('La contraseña que escribiste es diferente.');
         return;
     }

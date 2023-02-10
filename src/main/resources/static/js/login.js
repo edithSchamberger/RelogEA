@@ -38,8 +38,10 @@ async function iniciarSesion() {
       headers: getHeaders()
     });
     const usuario = await request.json();
+    console.log("usuario,", usuario);
     localStorage.email = datos.email;
     localStorage.idUser = usuario.id;
+    localStorage.setItem("rol",usuario.rol);
     alert("Login Correcto")
     window.location.href = 'principal.html'
   } else {

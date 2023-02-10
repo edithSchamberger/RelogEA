@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface RequerimientoRepository extends JpaRepository<Requerimiento, Long> {
 
+    List<Requerimiento> findAllByOrganizacion_OrganizacionId(Long organizacionId);
 }

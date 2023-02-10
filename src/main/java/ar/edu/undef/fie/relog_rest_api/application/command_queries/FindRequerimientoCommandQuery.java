@@ -1,9 +1,11 @@
 package ar.edu.undef.fie.relog_rest_api.application.command_queries;
 
 import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Requerimiento;
+import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.relog_rest_api.infrastructure.RequerimientoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -26,4 +28,7 @@ public class FindRequerimientoCommandQuery {
                 .orElseThrow(() -> new RuntimeException("Requerimiento no encontrado"));
     }
 
+    public List<Requerimiento>findByOrganizacion(Long organizacionId) {
+        return repository.findAllByOrganizacion_OrganizacionId(organizacionId);
+    }
 }
