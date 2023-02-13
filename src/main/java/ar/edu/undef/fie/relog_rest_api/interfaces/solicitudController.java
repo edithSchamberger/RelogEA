@@ -60,6 +60,8 @@ public class solicitudController {
                 HttpStatus.OK);
 
     }
+
+    //solicitudes s/organizaciones
     @GetMapping("/organizaciones/{orgazanizacionId}/solicitudes")
     public List<SolicitudResponse> findAllByOrganizacion(@PathVariable Long orgazanizacionId) {
         return query
@@ -68,6 +70,17 @@ public class solicitudController {
                 .map(Solicitud::response)
                 .collect(Collectors.toList());
     }
+
+    //solicitudes s/requerimiento
+   /* @GetMapping("/requerimiento/{requerimientoId}/solicitudes")
+    public List<SolicitudResponse> findAllByRequerimiento(@PathVariable Long requerimientoId) {
+        return query
+                .findByRequerimiento(requerimientoId)
+                .stream()
+                .map(Solicitud::response)
+                .collect(Collectors.toList());
+    }*/
+
 
 
 }

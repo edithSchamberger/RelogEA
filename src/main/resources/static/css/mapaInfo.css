@@ -1,15 +1,4 @@
 #map {
-    height: 90vh;
-    width: 100vh;
-}
-
-h1{
-    color: darkblue;
-    font-family: Verdana;
-    text-align: center;
-}
-
-select{
-    margin-bottom: 20px;
-    margin-left: 20px;
+    height: 100vh;
+    width: 100%;
 }

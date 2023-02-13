@@ -1,6 +1,7 @@
 package ar.edu.undef.fie.relog_rest_api.application.command_services;
 
 import ar.edu.undef.fie.relog_rest_api.application.command_queries.FindClaseCommandQuery;
+import ar.edu.undef.fie.relog_rest_api.domain.clases.Clase;
 import ar.edu.undef.fie.relog_rest_api.domain.clases.Efecto;
 import ar.edu.undef.fie.relog_rest_api.infrastructure.EfectoRepository;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class EfectoCommandService {
 
     public Efecto create(Efecto efecto){
      return efectoRepositoty.save(efecto);
+    }
+
+    public List<Efecto> create(List<Efecto> efectos) {
+        return efectoRepositoty.saveAll(efectos);
     }
 
 

@@ -25,8 +25,9 @@ public class RequerimientoResponse {
         for (var solicitud : solicitudes) {
             if (solicitud.getConfirmadaSolicitud()==false){
                 solicitud.response().setConfirmadaSolicitud(true);;
-                solicitudesResponse.add(solicitud.response());
+
             }
+            solicitudesResponse.add(solicitud.response());
         }
         this.solicitudes = solicitudesResponse;
         this.confirmado = confirmado;

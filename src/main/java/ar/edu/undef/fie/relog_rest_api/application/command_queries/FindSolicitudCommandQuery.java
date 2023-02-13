@@ -5,6 +5,7 @@ import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.relog_rest_api.infrastructure.SolicitudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,4 +38,10 @@ public class FindSolicitudCommandQuery {
     public List<Solicitud> findByOrganizacion(Long organizacionId) {
         return repository.findAllByOrganizacion_OrganizacionId(organizacionId);
     }
+
+/*
+    public List<Solicitud> findByRequerimiento(Long requerimientoId) {
+        return repository.findAllByRequerimiento_RequerimientoId(requerimientoId);
+    }
+*/
 }

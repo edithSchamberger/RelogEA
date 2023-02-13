@@ -31,5 +31,7 @@ public class FindEfectoCommandQuery {
     }
 
 
-
+    public Long count() {
+        return repository.count();
+    }
 }

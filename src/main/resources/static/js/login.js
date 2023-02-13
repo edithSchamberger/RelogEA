@@ -1,6 +1,7 @@
 $(document).ready(function() {
-  // on ready
+  localStorage.clear();
 });
+
 
 function getHeaders() {
   return {
@@ -36,13 +37,13 @@ async function iniciarSesion() {
     const request = await fetch('/usuarios/' + datos.email, {
       method: 'GET',
       headers: getHeaders()
-    });
+
+    })
+
     const usuario = await request.json();
-    console.log("usuario,", usuario);
     localStorage.email = datos.email;
     localStorage.idUser = usuario.id;
     localStorage.setItem("rol",usuario.rol);
-    alert("Login Correcto")
     window.location.href = 'principal.html'
   } else {
     alert("Las credenciales son incorrectas. Por favor intente nuevamente.");
@@ -58,3 +59,10 @@ async function cargarUsuario() {
     alert("Usuario o Contraseña incorrecta");
   }
 }
+
+// proteger rutas
+async function protegerRutas(){
+
+
+}
+

@@ -36,6 +36,11 @@ public class Efecto {
     public Efecto() {
     }
 
+    public Efecto(String nombreEfecto, Clase clase) {
+        this.nombreEfecto = nombreEfecto;
+        this.clase = clase;
+    }
+
     public Efecto(String nombreEfecto) {
         this.nombreEfecto = nombreEfecto;
     }

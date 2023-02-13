@@ -8,6 +8,7 @@ import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.relog_rest_api.interfaces.request.RequerimientoRequest;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.EfectoResponse;
 import ar.edu.undef.fie.relog_rest_api.interfaces.responses.RequerimientoResponse;
+import ar.edu.undef.fie.relog_rest_api.interfaces.responses.SolicitudResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class RequerimientoController {
                 .create(request)
                 .response();
     }
-
+// autorizaciones de requerimientos
     @PatchMapping("/requerimientos/{idRequerimiento}")
     public ResponseEntity<String> actualizar(@PathVariable Long idRequerimiento) {
         service.update(idRequerimiento);
@@ -51,7 +52,7 @@ public class RequerimientoController {
                 "Requerimiento autorizado",
                 HttpStatus.OK);
     }
-
+// requerimientos por organizacion
     @GetMapping("/organizaciones/{orgazanizacionId}/requerimientos")
     public List<RequerimientoResponse> findAllByOrganizacion(@PathVariable Long orgazanizacionId) {
         return query
@@ -60,5 +61,6 @@ public class RequerimientoController {
                 .map(Requerimiento::response)
                 .collect(Collectors.toList());
     }
+
 
 }

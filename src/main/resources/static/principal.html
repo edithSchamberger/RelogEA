@@ -8,7 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin=""/>
+    <link rel="stylesheet" type="text/css" href="css/mapaInfo.css" >
+    <style>
+        h2{color: #2e59d9  }
+    </style>
     <title>ReLog</title>
 
     <!-- Custom fonts for this template -->
@@ -107,7 +113,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="mapaInfo.html">
+            <a class="nav-link" href="mapaInforme.html">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Gráfico</span></a>
         </li>
@@ -355,17 +361,22 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Reporte de Logistico</h1>
-                <p class="mb-4">ReLog.
-                </p>
-
-
-
+                <h1 class="h3 mb-2 text-gray-800">Reporte de Logístico - ReLog</h1>
+            </div>
+            <div>
+                <h2 align="center">Ubicaciones Geográficas             </h2>
+            </div>
+            <div id="map">
+                <!-- Make sure you put this AFTER Leaflet's CSS -->
+                <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+                        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+                        crossorigin=""></script>
+                <script src="js/mapaInfo.js"></script>
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- End of Main Content -->
+
 
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -378,6 +389,7 @@
         <!-- End of Footer -->
 
     </div>
+
     <!-- End of Content Wrapper -->
 
 </div>
@@ -425,6 +437,9 @@
 
 <!-- Page level custom scripts -->
 <script src="js/registrarUsuarios.js"></script>
+<script src="js/protegerRutas.js">
+</script>
+
 
 </body>
 
