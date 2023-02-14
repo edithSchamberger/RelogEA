@@ -18,16 +18,12 @@ async function cargarOrganizaciones(){
     for (let organizacion of organizaciones) {
         console.log("prueba de organizacion", organizacion)
         //let botonInfo = `<a href="organizaciones.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Est Ab</a>`;
-        let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
-        let botonInfo =`<a  href="EstAb.html" class="btn btn-success" onclick="verInfo()\">  <i class="fas fa-info-circle"></i> </a>`;
+        let botonNuevo = `<a href="cargaestadosabastecimientos.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Carga Inicial</a>`;
         console.log("este es el rol", localStorage.getItem("rol"))
         //let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" STYLE="background: #258391" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
         let org = "<tr><th>"+organizacion.nombre+" " + "</th>" +
             "<th>"+organizacion.efectivoOrganico+"</th>" +
-            "<th>"+organizacion.latitud+"</th>" +
-            "<th>"+organizacion.longitud+"</th>" +
-            "<th>"+botonNuevoRequerimiento+ " "  +botonInfo+
-            "</th>"
+                   "<th>"+botonNuevo+  "</th>"
 
         listadoHtml+= org
     }
@@ -37,7 +33,7 @@ async function cargarOrganizaciones(){
 
 function guardarId(organizacionId) {
     console.log("id de la organi", organizacionId);
-    alert("Crear un nuevo Requerimiento");
+    alert("Carga Inicial del Estado Abastecimiento");
     localStorage.setItem("organizacionId",String(organizacionId) );
     //guardar un objeto
     //localStorage.setItem("organizacionId",JSON.stringify(OBJETO) );

@@ -1,6 +1,6 @@
 //comparar todos los roles...
-
-/*let rol= localStorage.getItem("rol");
+/*
+let rol= localStorage.getItem("rol");
 let pathname = window.location.pathname;
 console.log(window.location)
 console.log("probamos fuera if",rol)

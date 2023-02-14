@@ -163,7 +163,6 @@ async function morstrarRequerimientosOrgId(){
 
 }
 
-
 // esta bien
 async function generarRequerimiento(){
     let org=localStorage.getItem("organizacionId");

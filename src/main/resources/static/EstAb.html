@@ -55,42 +55,22 @@
 
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
-    <!-- Heading -->
-
-
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Dashboard -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-         aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Unidades</span>
-      </a>
-      <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Login Screens:</h6>
-          <a class="collapse-item" href="nuevaUnidad.html">Agregar Unidad</a>
-
-        </div>
-      </div>
+      <a class="nav-link" href="principal.html">
+        <i class="fas fa-fw fa-wallet"></i>
+        <span>Atras</span></a>
     </li>
-
-    <!-- Nav Item - Charts -->
-
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-      <a class="nav-link" href="movimientos.html">
-        <i class="fas fa-truck-monster"></i>
-        <span>Movimientos</span></a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="movimientos.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Personal Militar</span></a>
-    </li>
-
+    <hr class="sidebar-divider d-none d-md-block">
+    <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+    <hr class="sidebar-divider my-0">
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -134,79 +114,23 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Unidades/Subunidades</h1>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="organizaciones" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Efectivo</th>
+                <th>Estado Abastecimiento</th>
+              </tr>
+              </thead>
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                    Racionamiento</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="mr-2 d-none d-lg-inline text-gray-600 small" id="txt-ganPorOp-param">...</span></div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-percent fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
+              <tbody>
+
+              </tbody>
+            </table>
           </div>
         </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                    Vestuario y Equipo</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="mr-2 d-none d-lg-inline text-gray-600 small" id="txt-perPorOp-param">...</span></div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-percent fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                    Combustible y Lubricantes </div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="mr-2 d-none d-lg-inline text-gray-600 small" id="txt-varCombustible">...</span></div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-percent fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                    Munición </div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="mr-2 d-none d-lg-inline text-gray-600 small" id="txt-varEntreCaidas-param">...</span></div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-percent fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
       <!-- /.container-fluid -->
 
@@ -269,8 +193,7 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/organizaciones.js"></script>
-<script src="js/nuevaUnidad.js"></script>
+<script src="js/EstAb.js"></script>
 <script src="js/protegerRutas.js">
 </script>
 </body>
