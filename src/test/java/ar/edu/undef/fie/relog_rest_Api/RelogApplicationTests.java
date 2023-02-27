@@ -1,7 +1,7 @@
 package ar.edu.undef.fie.relog_rest_Api;
 
 
-import ar.edu.undef.fie.relog_rest_api.domain.organizacion.Organizacion;
+import ar.edu.undef.fie.domain.organizacion.Organizacion;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

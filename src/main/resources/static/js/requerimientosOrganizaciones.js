@@ -4,6 +4,8 @@ $(document).ready(function() {
     $('#allRequerimientos').DataTable();
 });
 
+const rolNuevo = localStorage.getItem('rol')
+console.log("probando rol", rolNuevo)
 
 async function cargarAllRequerimientos(){
     // const efectosReq = await fetch(ruta, objeto de peticion);
@@ -16,15 +18,23 @@ async function cargarAllRequerimientos(){
             <td>${req.fechaDeEntregaRequerida}</td>
             <td>${req.organizacion.nombre}</td>
             <!-- condicion ? si true : si false-->
-            <td>${req.confirmado? "Autorizado" :"Pendiente"} </td>
+            <td>${req.confirmado ? "Autorizado" : "Pendiente"}</td>
             <td>
-                <a class="btn btn-info"  onclick="autorizarReq(${req.requerimientoId})">
-                    <i >Autorizar</i>
-                </a> 
-                <a class="btn btn-success" onclick="guardarId(${req.requerimientoId})">
+                <!-- 3 + 3 === true ? <button class="btn btn-info"  onclick="autorizarReq(req.requerimientoId)">
+                    <i>Autorizar</i>
+                </button> : '' -->
+
+                
+            
+                
+                <button class="btn btn-info" onclick="autorizarReq(${req.requerimientoId})" ${rolNuevo== "Administrador" || rolNuevo =="Logistico" ? "" : "disabled"}>
+                    <i>Autorizar</i>
+                </button>
+                
+                <button class="btn btn-success" onclick="guardarId(${req.requerimientoId})">
                     <i class="fas fa-info-circle"></i>
-                </a>
-            </td>            
+                </button>
+            </td>
         </tr>`)
         console.log("IDreque ",req.requerimientoId);
     }

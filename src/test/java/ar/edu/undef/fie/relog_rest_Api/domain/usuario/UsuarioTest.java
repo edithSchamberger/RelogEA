@@ -1,7 +1,8 @@
 package ar.edu.undef.fie.relog_rest_Api.domain.usuario;
 
-import ar.edu.undef.fie.relog_rest_api.domain.inicio.Usuario;
-import ar.edu.undef.fie.relog_rest_api.utils.JWTUtil;
+
+import ar.edu.undef.fie.domain.inicio.Usuario;
+import ar.edu.undef.fie.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.junit.jupiter.api.DisplayName;

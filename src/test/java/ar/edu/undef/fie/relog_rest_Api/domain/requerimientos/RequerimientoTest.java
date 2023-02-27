@@ -1,9 +1,9 @@
 package ar.edu.undef.fie.relog_rest_Api.domain.requerimientos;
 
-import ar.edu.undef.fie.relog_rest_api.domain.clases.*;
-import ar.edu.undef.fie.relog_rest_api.domain.organizacion.Organizacion;
-import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Requerimiento;
-import ar.edu.undef.fie.relog_rest_api.domain.requerimiento.Solicitud;
+import ar.edu.undef.fie.domain.clases.*;
+import ar.edu.undef.fie.domain.organizacion.Organizacion;
+import ar.edu.undef.fie.domain.requerimiento.Requerimiento;
+import ar.edu.undef.fie.domain.requerimiento.Solicitud;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package ar.edu.undef.fie.relog_rest_Api.domain.efectos;
 
-import ar.edu.undef.fie.relog_rest_api.domain.clases.*;
+import ar.edu.undef.fie.domain.clases.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
