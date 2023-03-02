@@ -25,7 +25,7 @@ async function  cargarEfectos(){
     //me trae el elemento por id
     let tabla=document.getElementById("efectos-tbody");
     tabla.innerHTML = elementos.join("");
-
+    //join toma un array y lo convierte en string
 }
 
 

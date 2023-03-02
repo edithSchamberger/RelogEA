@@ -1,6 +1,7 @@
 package ar.edu.undef.fie.application.command_queries;
 
 import ar.edu.undef.fie.domain.estadoAbastecimiento.movimiento.EstadoAbastecimiento;
+import ar.edu.undef.fie.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.infrastructure.EstadoAbastecimientoRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,7 @@ public class FindEstadoAbastecimientoCommandQuery {
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Estado Abastecimiento no encontrada"));
     }
-
+    public List<EstadoAbastecimiento> findByOrganizacion(Long organizacionId) {
+        return repository.findAllByOrganizacion_OrganizacionId(organizacionId);
+    }
 }

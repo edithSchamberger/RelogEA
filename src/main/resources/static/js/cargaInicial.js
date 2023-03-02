@@ -9,7 +9,7 @@ $(document).ready(function() {
     //const añoActual = fecha.getFullYear();
     //const mesActual = fecha.getMonth() + 1;
     //const diaActual = fecha.getDate() + 1;
-
+    morstrarAbOrgId();
   //  cargarEstAb();
 
 });
@@ -30,9 +30,36 @@ btnVolver.addEventListener("click", ()=>{
     modal.close();
 })
 
-btnAceptar.addEventListener("click", ()=>{
-    modalFecha.showModal();
-})
+async function  morstrarAbOrgId(){
+    // traigo el ID del Body tabla
+    let tabla=document.getElementById("SestadoAbastecimiento-tbody");
+
+    //traigo el id de la Org
+    let id = localStorage.getItem("organizacionId")
+
+    // const efectosReq = await fetch(ruta, objeto de peticion);
+    const estAbReq = await fetch("/organizaciones/"+id+"/estadoAbastecimentos");
+    let estAbs = await estAbReq.json();
+
+    console.log("nuevo ",typeof estAbs);
+    let elementos =[];
+
+    for (let ab of estAbs){
+        console.log("nuevo dentro del for ",ab);
+        elementos.push(` <tr> 
+         <td>${ab.efecto.nombreEfecto} </td> 
+         <td> ${ab.efecto.clase.abreviatura}</td>  
+         <td> ${ab.cantidadNecesaria}</td> 
+         <td> ${ab.cantidadDisponible}</td> 
+         <td> ${ab.porcentajeAbastecimiento +" %"}</td> 
+         </tr>`)
+    }
+    tabla.innerHTML = elementos.join("");
+
+    // por cada ab se crea un Tr una fila <tr>  </tr>
+    //cada  <td> </td>  es cada columna
+    //innerText se trata como texto y HTML
+}
 
 
 
@@ -74,6 +101,7 @@ function registrar(){
     modal.close();
     alert("Carga Correcta!");
     cargarEstAb();
+    morstrarAbOrgId()
 
 }
 

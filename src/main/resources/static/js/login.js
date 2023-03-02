@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  localStorage.clear();
+
 });
 
 
@@ -58,11 +58,5 @@ async function cargarUsuario() {
   }else {
     alert("Usuario o Contraseña incorrecta");
   }
-}
-
-// proteger rutas
-async function protegerRutas(){
-
-
 }
 

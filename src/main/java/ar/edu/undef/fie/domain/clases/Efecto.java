@@ -39,6 +39,7 @@ public class Efecto {
     public Efecto(String nombreEfecto, Clase clase) {
         this.nombreEfecto = nombreEfecto;
         this.clase = clase;
+
     }
 
     public Efecto(String nombreEfecto) {

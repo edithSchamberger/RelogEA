@@ -93,6 +93,7 @@ async function cargarSolicitudes(){
     let id = localStorage.getItem("organizacionId")
     const solicitudesReq = await fetch("/organizaciones/"+id+"/solicitudes");
     let solicitudes = await solicitudesReq.json();
+
     auxSolicitud=solicitudes.filter(
         function(sol){
         console.log("filter:", sol);

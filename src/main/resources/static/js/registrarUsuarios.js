@@ -1,6 +1,9 @@
 $(document).ready(function() {
 });
+const rolNuevoOrganiciones = localStorage.getItem('rol')
+console.log("rol en principal", rolNuevoOrganiciones)
 async function cargarUsuarios(){
+
     let selectorNombre = document.getElementById('txtNombre').value;
     let selectorApellido = document.getElementById('txtApellido').value;
     let selectorEmail = document.getElementById('txtEmail').value;
@@ -30,4 +33,8 @@ async function cargarUsuarios(){
     alert("La cuenta fue creada con exito!");
     window.location.href = 'index.html';
 
+}
+function logout(){
+    window.location.href="index.html";
+    localStorage.clear();
 }

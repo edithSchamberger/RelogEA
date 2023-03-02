@@ -1,7 +1,8 @@
-// Call the dataTables jQuery plugin
+
 $(document).ready(function() {
 
 });
+
 //servidor
 async function registrarOrganizacion(){
     let datos = {};

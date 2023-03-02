@@ -2,10 +2,10 @@ $(document).ready(function() {
     cargarOrganizaciones();
     $('#organizaciones').DataTable();
 });
-console.log("estoy en la nueva funcion", localStorage.getItem("rol"))
+const rolNuevoOrganiciones = localStorage.getItem('rol')
+console.log("rol en organizaciones", rolNuevoOrganiciones)
 //llamado al servidor
 async function cargarOrganizaciones(){
-    let rol= localStorage.getItem("rol")
     console.log("1er rol",rol)
     const organizacionesReq = await fetch('organizaciones', {
         method: 'GET',
@@ -21,7 +21,7 @@ async function cargarOrganizaciones(){
         console.log("prueba de organizacion", organizacion)
         //let botonInfo = `<a href="organizaciones.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Est Ab</a>`;
         let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
-        let botonInfo =`<a  href="EstAb.html" class="btn btn-success" onclick="verInfo()\">  <i class="fas fa-info-circle"></i> </a>`;
+        let botonInfo =`<a  href="estadosabastecimientosID.html" class="btn btn-success" onclick="verInfo()\">  <i class="fas fa-info-circle"></i> </a>`;
         //let botonNuevoRequerimiento = `<a href="requerimientos.html" class="btn btn-info" STYLE="background: #258391" onclick="guardarId(${organizacion.organizacionId})">Nuevo</a>`;
         let org = "<tr><th>"+organizacion.nombre+" " + "</th>" +
             "<th>"+organizacion.efectivoOrganico+"</th>" +

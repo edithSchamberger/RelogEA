@@ -4,3 +4,5 @@ COPY src/main/resources/static /static
 EXPOSE 8282
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 
+
+

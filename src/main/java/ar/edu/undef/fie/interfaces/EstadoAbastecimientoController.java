@@ -1,5 +1,6 @@
 package ar.edu.undef.fie.interfaces;
 
+import ar.edu.undef.fie.domain.requerimiento.Solicitud;
 import ar.edu.undef.fie.exception.NotFoundException;
 import ar.edu.undef.fie.interfaces.request.EstadoAbastecimientoRequest;
 import ar.edu.undef.fie.application.command_queries.FindEfectoCommandQuery;
@@ -8,6 +9,7 @@ import ar.edu.undef.fie.application.command_services.EfectoCommandService;
 import ar.edu.undef.fie.application.command_services.EstadoAbastecimientoCommandService;
 import ar.edu.undef.fie.domain.estadoAbastecimiento.movimiento.EstadoAbastecimiento;
 import ar.edu.undef.fie.interfaces.responses.EstadoAbastecimientoResponse;
+import ar.edu.undef.fie.interfaces.responses.SolicitudResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +40,15 @@ public class EstadoAbastecimientoController {
                 .map(EstadoAbastecimiento::response)
                 .collect(Collectors.toList());
     }
-
+    //EstAb segun organizacion
+    @GetMapping("/organizaciones/{orgazanizacionId}/estadoAbastecimentos")
+    public List<EstadoAbastecimientoResponse> findAllByOrganizacion(@PathVariable Long orgazanizacionId) {
+        return query
+                .findByOrganizacion(orgazanizacionId)
+                .stream()
+                .map(EstadoAbastecimiento::response)
+                .collect(Collectors.toList());
+    }
 
     @DeleteMapping(value = "estadoAbastecimiento/{id}")
     public ResponseEntity<String> eliminarEstAb(@PathVariable Long id)  throws NotFoundException {
@@ -48,6 +58,8 @@ public class EstadoAbastecimientoController {
                 "Estado Abastecimiento eliminado con éxito",
                 HttpStatus.OK);
     }
+
+    //tendria que mandar una lista de objeto no un objeto!
     @GetMapping(value = "estadoAbastecimientos/{id}")
     public EstadoAbastecimientoResponse getEstadoAbastecimiento(@PathVariable Long id)  throws NotFoundException {
         return query.findById(id).response();

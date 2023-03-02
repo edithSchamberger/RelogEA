@@ -26,6 +26,7 @@ security:
     issuer: "Main"
     ttlMillis: 604800000
 
+
 # JWT
 #security.jwt.secret=ghk45jgherogho834go3h4g
 #security.jwt.issuer=Main

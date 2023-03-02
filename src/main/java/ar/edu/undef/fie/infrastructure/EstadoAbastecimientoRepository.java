@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface EstadoAbastecimientoRepository extends JpaRepository<EstadoAbastecimiento, Long> {
     List<EstadoAbastecimiento> findByOrganizacion(Optional<Organizacion> org);
+
+    List<EstadoAbastecimiento> findAllByOrganizacion_OrganizacionId(Long organizacionId);
 }

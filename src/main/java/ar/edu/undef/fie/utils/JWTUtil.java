@@ -17,7 +17,8 @@ import java.util.Date;
 /**
  * @author Mahesh
  */
-@Component
+@Component// significa que se puede compartir entre clases, permite el empleo de las otras anotaciones
+// de spring como @Autowired y @Value para inyectar dependencias
 public class JWTUtil {
     @Value("${security.jwt.secret}")
     private String key;
@@ -44,6 +45,7 @@ public class JWTUtil {
 
 
         // The JWT signature algorithm used to sign the token
+        // firma utilizando algoritmo con hmacsha256
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
         long nowMillis = System.currentTimeMillis();
@@ -53,7 +55,7 @@ public class JWTUtil {
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(key);
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
-        //  set the JWT Claims
+        //  set the JWT Claims - Utilizo este algoritmo para firmar la clave
         JwtBuilder builder = Jwts.builder().setId(id).setIssuedAt(now).setSubject(subject).setIssuer(issuer)
                 .signWith(signatureAlgorithm, signingKey);
 

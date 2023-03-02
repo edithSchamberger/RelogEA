@@ -3,7 +3,7 @@
 let rol= localStorage.getItem("rol");
 let pathname = window.location.pathname;
 console.log(window.location)
-console.log("probamos fuera if",rol)
+console.log("Rol con el que se genera el Ingreso",rol)
     if(rol==null){
         console.log("probamos nuevo rol dentro del if",rol)
         alert("")
